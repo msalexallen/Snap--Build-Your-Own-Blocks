@@ -2316,20 +2316,19 @@ Process.prototype.doSetTempo = function (bpm) {
 Process.prototype.reportInstrument = function () {
     var stage;
     if (this.homeContext.receiver) {
-        stage = this.homeContext.receiver.parentThatIsA(StageMorph);
-        if (stage) {
-            return stage.getInstrument();
+        thisObj = this.homeContext.receiver;
+        if (thisObj) {
+            return thisObj.getInstrument();
         }
     }
     return 0;
 };
 
 Process.prototype.doSetInstrument = function (inst) {
-    var stage;
     if (this.homeContext.receiver) {
-        stage = this.homeContext.receiver.parentThatIsA(StageMorph);
-        if (stage) {
-            stage.setInstrument(inst);
+        thisObj = this.homeContext.receiver;
+        if (thisObj) {
+            thisObj.setInstrument(inst);
         }
     }
 };

@@ -1121,6 +1121,8 @@ SpriteMorph.prototype.init = function (globals) {
     this.isClone = false; // indicate a "temporary" Scratch-style clone
     this.cloneOriginName = '';
 
+    this.instrument = 129; //sound as a local variable (sine wave)
+
     this.blocksCache = {}; // not to be serialized (!)
     this.paletteCache = {}; // not to be serialized (!)
     this.rotationOffset = new Point(); // not to be serialized (!)
@@ -2709,12 +2711,12 @@ SpriteMorph.prototype.getTempo = function () {
 
 // SpriteMorph instrument
 
+SpriteMorph.prototype.setInstrument = function (inst) {
+    this.instrument = inst;
+};
+
 SpriteMorph.prototype.getInstrument = function () {
-    var stage = this.parentThatIsA(StageMorph);
-    if (stage) {
-        return stage.getInstrument();
-    }
-    return 0;
+    return +this.instrument;
 };
 
 // SpriteMorph user prompting
